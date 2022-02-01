@@ -8,6 +8,26 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeState());
 
   Future<void> start() async {
-
+    emit(
+      HomeState(
+        status: Status.loading,
+      ),
+    );
+    await Future.delayed(const Duration(seconds: 1));
+    emit(
+      HomeState(
+        status: Status.success,
+        results: [
+          const AuthorModel(
+            avatarURL: 'https://randomuser.me/api/portraits/men/57.jpg',
+            name: 'Piotr Obdarowicz',
+          ),
+          const AuthorModel(
+            avatarURL: 'https://randomuser.me/api/portraits/men/58.jpg',
+            name: 'Radosław Gdański',
+          ),
+        ],
+      ),
+    );
   }
 }
