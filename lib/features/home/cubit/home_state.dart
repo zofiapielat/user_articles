@@ -1,6 +1,13 @@
 part of 'home_cubit.dart';
 
-@immutable
-abstract class HomeState {}
+class HomeState {
+  HomeState({
+    this.results = const [],
+    this.status = Status.initial,
+    this.errorMessage,
+  });
 
-class HomeInitial extends HomeState {}
+  final List<AuthorModel> results;
+  final Status status;
+  final String? errorMessage;
+}

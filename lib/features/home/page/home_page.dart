@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
           builder: (context, state) {
             return ListView(
               children: const [
-                _UserItemWidget(
+                _AuthorItemWidget(
                   avatarURL: 'https://randomuser.me/api/portraits/men/3.jpg',
                   name: 'Piotr Obdarowicz',
                 ),
@@ -29,8 +29,8 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class _UserItemWidget extends StatelessWidget {
-  const _UserItemWidget({
+class _AuthorItemWidget extends StatelessWidget {
+  const _AuthorItemWidget({
     Key? key,
     required this.avatarURL,
     required this.name,
