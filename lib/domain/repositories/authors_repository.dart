@@ -8,6 +8,9 @@ class AuthorsRepository {
 
   Future<List<AuthorModel>> getAuthorModels() async {
     final json = await _remoteDataSource.getAuthorsData();
+    if (json == null) {
+      return [];
+    }
     return json.map((e) => AuthorModel.fromJson(e)).toList();
   }
 }
