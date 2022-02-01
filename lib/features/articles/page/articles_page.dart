@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_articles/app/core/enums.dart';
 import 'package:user_articles/domain/models/article_model.dart';
 import 'package:user_articles/domain/models/author_model.dart';
+import 'package:user_articles/domain/repositories/articles_repository.dart';
 import 'package:user_articles/features/articles/cubit/articles_cubit.dart';
 
 class ArticlesPage extends StatelessWidget {
@@ -20,7 +21,7 @@ class ArticlesPage extends StatelessWidget {
         title: Text(author.name),
       ),
       body: BlocProvider(
-        create: (context) => ArticlesCubit()
+        create: (context) => ArticlesCubit(ArticlesRepository())
           ..fetchData(
             authorID: author.id,
           ),

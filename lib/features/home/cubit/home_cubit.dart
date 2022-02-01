@@ -1,11 +1,14 @@
 import 'package:bloc/bloc.dart';
 import 'package:user_articles/app/core/enums.dart';
 import 'package:user_articles/domain/models/author_model.dart';
+import 'package:user_articles/domain/repositories/authors_repository.dart';
 
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(HomeState());
+  HomeCubit(this._authorsRepository) : super(HomeState());
+
+  final AuthorsRepository _authorsRepository;
 
   Future<void> start() async {
     emit(
@@ -14,22 +17,21 @@ class HomeCubit extends Cubit<HomeState> {
       ),
     );
     await Future.delayed(const Duration(seconds: 1));
-    emit(
-      HomeState(
-        status: Status.success,
-        results: [
-          const AuthorModel(
-            id: 1,
-            avatarURL: 'https://randomuser.me/api/portraits/men/57.jpg',
-            name: 'Piotr Obdarowicz',
-          ),
-          const AuthorModel(
-            id: 2,
-            avatarURL: 'https://randomuser.me/api/portraits/men/58.jpg',
-            name: 'Radosław Gdański',
-          ),
-        ],
-      ),
-    );
+    try {
+      final results = await _authorsRepository.getAuthors();
+      emit(
+        HomeState(
+          status: Status.success,
+          results: results,
+        ),
+      );
+    } catch (error) {
+      emit(
+        HomeState(
+          status: Status.error,
+          errorMessage: error.toString(),
+        ),
+      );
+    }
   }
 }

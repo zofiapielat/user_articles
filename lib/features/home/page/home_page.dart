@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_articles/app/core/enums.dart';
 import 'package:user_articles/domain/models/author_model.dart';
+import 'package:user_articles/domain/repositories/authors_repository.dart';
 import 'package:user_articles/features/articles/page/articles_page.dart';
 import 'package:user_articles/features/home/cubit/home_cubit.dart';
 
@@ -14,7 +15,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
-        create: (context) => HomeCubit()..start(),
+        create: (context) => HomeCubit(AuthorsRepository())..start(),
         child: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
             switch (state.status) {

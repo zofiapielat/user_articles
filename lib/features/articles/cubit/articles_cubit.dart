@@ -1,11 +1,14 @@
 import 'package:bloc/bloc.dart';
 import 'package:user_articles/app/core/enums.dart';
 import 'package:user_articles/domain/models/article_model.dart';
+import 'package:user_articles/domain/repositories/articles_repository.dart';
 
 part 'articles_state.dart';
 
 class ArticlesCubit extends Cubit<ArticlesState> {
-  ArticlesCubit() : super(ArticlesState());
+  ArticlesCubit(this._articlesRepository) : super(ArticlesState());
+
+  final ArticlesRepository _articlesRepository;
 
   Future<void> fetchData({required int authorID}) async {
     emit(
@@ -14,18 +17,22 @@ class ArticlesCubit extends Cubit<ArticlesState> {
       ),
     );
     await Future.delayed(const Duration(seconds: 1));
-    emit(
-      ArticlesState(
-        status: Status.success,
-        results: [
-          ArticleModel(
-            id: 1,
-            authorID: authorID,
-            content:
-                'Lorem ipsum dolor sit amet tempor vitae, pellentesque erat velit ac nibh ac purus. Duis blandit eu, facilisis hendrerit. Fusce consequat ac, suscipit quis, ipsum. Nam posuere. Quisque pharetra, urna quis massa at sapien pede lobortis volutpat.',
-          ),
-        ],
-      ),
-    );
+    try {
+      final results =
+          await _articlesRepository.getArticlesForAuthorID(authorID);
+      emit(
+        ArticlesState(
+          status: Status.success,
+          results: results,
+        ),
+      );
+    } catch (error) {
+      emit(
+        ArticlesState(
+          status: Status.error,
+          errorMessage: error.toString(),
+        ),
+      );
+    }
   }
 }
