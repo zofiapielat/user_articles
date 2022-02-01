@@ -71,7 +71,7 @@ class _AuthorItemWidget extends StatelessWidget {
         onTap: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (_) => ArticlesPage(authorID: model.id),
+              builder: (_) => ArticlesPage(author: model),
             ),
           );
         },

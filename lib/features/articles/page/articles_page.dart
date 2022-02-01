@@ -2,52 +2,72 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_articles/app/core/enums.dart';
 import 'package:user_articles/domain/models/article_model.dart';
+import 'package:user_articles/domain/models/author_model.dart';
 import 'package:user_articles/features/articles/cubit/articles_cubit.dart';
 
 class ArticlesPage extends StatelessWidget {
   const ArticlesPage({
     Key? key,
-    required this.authorID,
+    required this.author,
   }) : super(key: key);
 
-  final int authorID;
+  final AuthorModel author;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(author.name),
+      ),
       body: BlocProvider(
-        create: (context) => ArticlesCubit()..fetchData(authorID: authorID),
-        child: BlocBuilder<ArticlesCubit, ArticlesState>(
-          builder: (context, state) {
-            switch (state.status) {
-              case Status.initial:
-                return const Center(
-                  child: Text('Initial state'),
-                );
-              case Status.loading:
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              case Status.success:
-                return ListView(
-                  children: [
-                    for (final author in state.results)
-                      _AuthorItemWidget(
-                        model: author,
-                      ),
-                  ],
-                );
-              case Status.error:
-                return Center(
-                  child: Text(
-                    state.errorMessage ?? 'Unknown error',
-                    style: TextStyle(
-                      color: Theme.of(context).errorColor,
-                    ),
-                  ),
-                );
-            }
-          },
+        create: (context) => ArticlesCubit()
+          ..fetchData(
+            authorID: author.id,
+          ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: CircleAvatar(
+                backgroundImage: NetworkImage(author.avatarURL),
+                radius: 50,
+              ),
+            ),
+            Expanded(
+              child: BlocBuilder<ArticlesCubit, ArticlesState>(
+                builder: (context, state) {
+                  switch (state.status) {
+                    case Status.initial:
+                      return const Center(
+                        child: Text('Initial state'),
+                      );
+                    case Status.loading:
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    case Status.success:
+                      return ListView(
+                        children: [
+                          for (final author in state.results)
+                            _AuthorItemWidget(
+                              model: author,
+                            ),
+                        ],
+                      );
+                    case Status.error:
+                      return Center(
+                        child: Text(
+                          state.errorMessage ?? 'Unknown error',
+                          style: TextStyle(
+                            color: Theme.of(context).errorColor,
+                          ),
+                        ),
+                      );
+                  }
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );
