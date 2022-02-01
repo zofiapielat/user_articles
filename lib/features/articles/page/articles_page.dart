@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_articles/app/core/enums.dart';
-import 'package:user_articles/domain/models/author_model.dart';
-import 'package:user_articles/features/articles/page/articles_page.dart';
-import 'package:user_articles/features/home/cubit/home_cubit.dart';
+import 'package:user_articles/domain/models/article_model.dart';
+import 'package:user_articles/features/articles/cubit/articles_cubit.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({
+class ArticlesPage extends StatelessWidget {
+  const ArticlesPage({
     Key? key,
+    required this.authorID,
   }) : super(key: key);
+
+  final int authorID;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
-        create: (context) => HomeCubit()..start(),
-        child: BlocBuilder<HomeCubit, HomeState>(
+        create: (context) => ArticlesCubit()..fetchData(authorID: authorID),
+        child: BlocBuilder<ArticlesCubit, ArticlesState>(
           builder: (context, state) {
             switch (state.status) {
               case Status.initial:
@@ -58,7 +60,7 @@ class _AuthorItemWidget extends StatelessWidget {
     required this.model,
   }) : super(key: key);
 
-  final AuthorModel model;
+  final ArticleModel model;
 
   @override
   Widget build(BuildContext context) {
@@ -68,13 +70,7 @@ class _AuthorItemWidget extends StatelessWidget {
         vertical: 10,
       ),
       child: InkWell(
-        onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (_) => ArticlesPage(authorID: model.id),
-            ),
-          );
-        },
+        onTap: () {},
         child: Container(
           padding: const EdgeInsets.symmetric(
             horizontal: 20,
@@ -83,19 +79,13 @@ class _AuthorItemWidget extends StatelessWidget {
           color: Colors.black12,
           child: Row(
             children: [
-              CircleAvatar(
-                backgroundImage: NetworkImage(
-                  model.avatarURL,
-                ),
-              ),
-              const SizedBox(width: 10),
               Expanded(
-                child: Text(model.name),
+                child: Text(model.content),
               ),
               const SizedBox(width: 10),
               const Icon(
                 Icons.arrow_right,
-                color: Colors.black26,
+                color: Colors.black,
                 size: 20,
               ),
             ],

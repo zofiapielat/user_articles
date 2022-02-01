@@ -19,10 +19,12 @@ class HomeCubit extends Cubit<HomeState> {
         status: Status.success,
         results: [
           const AuthorModel(
+            id: 1,
             avatarURL: 'https://randomuser.me/api/portraits/men/57.jpg',
             name: 'Piotr Obdarowicz',
           ),
           const AuthorModel(
+            id: 2,
             avatarURL: 'https://randomuser.me/api/portraits/men/58.jpg',
             name: 'Radosław Gdański',
           ),
