@@ -15,17 +15,23 @@ class AuthorsRepository {
   }
 }
 
-// return [
-//   const AuthorModel(
-//     id: 1,
-//     avatarURL: 'https://randomuser.me/api/portraits/men/57.jpg',
-//     firstName: 'Piotr Obdarowicz',
-//     lastName: 'Piotr Obdarowicz',
-//   ),
-//   const AuthorModel(
-//     id: 2,
-//     avatarURL: 'https://randomuser.me/api/portraits/men/58.jpg',
-//     firstName: 'Radosław Gdański',
-//     lastName: 'Radosław Gdański',
-//   ),
-// ];
+class AuthorsMockedRepository {
+  AuthorsMockedRepository();
+
+  Future<List<AuthorModel>> getAuthorModels() async {
+    return [
+      const AuthorModel(
+        id: 1,
+        avatarURL: 'https://randomuser.me/api/portraits/men/57.jpg',
+        firstName: 'Piotr Obdarowicz',
+        lastName: 'Piotr Obdarowicz',
+      ),
+      const AuthorModel(
+        id: 2,
+        avatarURL: 'https://randomuser.me/api/portraits/men/58.jpg',
+        firstName: 'Radosław Gdański',
+        lastName: 'Radosław Gdański',
+      ),
+    ];
+  }
+}
