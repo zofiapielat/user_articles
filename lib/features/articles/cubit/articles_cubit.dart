@@ -20,10 +20,12 @@ class ArticlesCubit extends Cubit<ArticlesState> {
     try {
       final results =
           await _articlesRepository.getArticlesForAuthorId(authorId);
+      final filteredResults =
+          results.where((article) => article.authorId == authorId).toList();
       emit(
         ArticlesState(
           status: Status.success,
-          results: results,
+          results: filteredResults,
         ),
       );
     } catch (error) {
