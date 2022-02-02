@@ -94,7 +94,7 @@ class _AuthorItemWidget extends StatelessWidget {
             children: [
               CircleAvatar(
                 backgroundImage: NetworkImage(
-                  model.avatarURL,
+                  model.picture,
                 ),
               ),
               const SizedBox(width: 10),

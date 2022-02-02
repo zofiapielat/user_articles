@@ -30,7 +30,7 @@ class ArticlesPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: CircleAvatar(
-                backgroundImage: NetworkImage(author.avatarURL),
+                backgroundImage: NetworkImage(author.picture),
                 radius: 50,
               ),
             ),

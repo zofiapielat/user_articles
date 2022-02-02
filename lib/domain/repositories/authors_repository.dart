@@ -22,13 +22,13 @@ class AuthorsMockedRepository {
     return [
       const AuthorModel(
         id: 1,
-        avatarURL: 'https://randomuser.me/api/portraits/men/57.jpg',
+        picture: 'https://randomuser.me/api/portraits/men/57.jpg',
         firstName: 'Piotr Obdarowicz',
         lastName: 'Piotr Obdarowicz',
       ),
       const AuthorModel(
         id: 2,
-        avatarURL: 'https://randomuser.me/api/portraits/men/58.jpg',
+        picture: 'https://randomuser.me/api/portraits/men/58.jpg',
         firstName: 'Radosław Gdański',
         lastName: 'Radosław Gdański',
       ),
