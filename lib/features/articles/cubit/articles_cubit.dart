@@ -6,9 +6,9 @@ import 'package:user_articles/domain/repositories/articles_repository.dart';
 part 'articles_state.dart';
 
 class ArticlesCubit extends Cubit<ArticlesState> {
-  ArticlesCubit(this._articlesRepository) : super(ArticlesState());
+  ArticlesCubit({required this.articlesRepository}) : super(ArticlesState());
 
-  final ArticlesRepository _articlesRepository;
+  final ArticlesRepository articlesRepository;
 
   Future<void> fetchData({required int authorId}) async {
     emit(
@@ -18,8 +18,7 @@ class ArticlesCubit extends Cubit<ArticlesState> {
     );
     await Future.delayed(const Duration(seconds: 1));
     try {
-      final results =
-          await _articlesRepository.getArticlesForAuthorId(authorId);
+      final results = await articlesRepository.getArticlesForAuthorId(authorId);
       final filteredResults =
           results.where((article) => article.authorId == authorId).toList();
       emit(

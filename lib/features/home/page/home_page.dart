@@ -19,8 +19,10 @@ class HomePage extends StatelessWidget {
       body: BlocProvider(
         create: (context) {
           return HomeCubit(
-            AuthorsRepository(
-              AuthorsRemoteRetroFitDataSource(Dio()),
+            authorsRepository: AuthorsRepository(
+              remoteDataSource: AuthorsRemoteRetroFitDataSource(
+                Dio(),
+              ),
             ),
           )..start();
         },

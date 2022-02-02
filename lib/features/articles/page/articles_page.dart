@@ -24,8 +24,8 @@ class ArticlesPage extends StatelessWidget {
       ),
       body: BlocProvider(
         create: (context) => ArticlesCubit(
-          ArticlesRepository(
-            ArticlesRemoteRetroFitDataSource(
+          articlesRepository: ArticlesRepository(
+            remoteDataSource: ArticlesRemoteRetroFitDataSource(
               Dio(),
             ),
           ),

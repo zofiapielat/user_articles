@@ -6,9 +6,9 @@ import 'package:user_articles/domain/repositories/authors_repository.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit(this._authorsRepository) : super(HomeState());
+  HomeCubit({required this.authorsRepository}) : super(HomeState());
 
-  final AuthorsRepository _authorsRepository;
+  final AuthorsRepository authorsRepository;
 
   Future<void> start() async {
     emit(
@@ -18,7 +18,7 @@ class HomeCubit extends Cubit<HomeState> {
     );
     await Future.delayed(const Duration(seconds: 1));
     try {
-      final results = await _authorsRepository.getAuthorModels();
+      final results = await authorsRepository.getAuthorModels();
       emit(
         HomeState(
           status: Status.success,

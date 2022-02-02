@@ -2,12 +2,12 @@ import 'package:user_articles/data/remote_data_sources/authors/authors_remote_da
 import 'package:user_articles/domain/models/author_model.dart';
 
 class AuthorsRepository {
-  AuthorsRepository(this._remoteDataSource);
+  AuthorsRepository({required this.remoteDataSource});
 
-  final AuthorsRemoteRetroFitDataSource _remoteDataSource;
+  final AuthorsRemoteRetroFitDataSource remoteDataSource;
 
   Future<List<AuthorModel>> getAuthorModels() async {
-    final json = await _remoteDataSource.getAuthors();
+    final json = await remoteDataSource.getAuthors();
     if (json == null) {
       return [];
     }
