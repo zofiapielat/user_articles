@@ -1,6 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_articles/app/core/enums.dart';
+import 'package:user_articles/data/remote_data_sources/articles/articles_remote_data_source.dart';
 import 'package:user_articles/domain/models/article_model.dart';
 import 'package:user_articles/domain/models/author_model.dart';
 import 'package:user_articles/domain/repositories/articles_repository.dart';
@@ -21,9 +23,14 @@ class ArticlesPage extends StatelessWidget {
         title: Text(author.name),
       ),
       body: BlocProvider(
-        create: (context) => ArticlesCubit(ArticlesRepository())
-          ..fetchData(
-            authorID: author.id,
+        create: (context) => ArticlesCubit(
+          ArticlesRepository(
+            ArticlesRemoteRetroFitDataSource(
+              Dio(),
+            ),
+          ),
+        )..fetchData(
+            authorId: author.id,
           ),
         child: Column(
           children: [

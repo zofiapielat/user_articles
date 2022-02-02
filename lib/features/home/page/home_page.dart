@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_articles/app/core/enums.dart';
-import 'package:user_articles/data/remote_data_sources/authors_remote_data_source.dart';
+import 'package:user_articles/data/remote_data_sources/authors/authors_remote_data_source.dart';
 import 'package:user_articles/domain/models/author_model.dart';
 import 'package:user_articles/domain/repositories/authors_repository.dart';
 import 'package:user_articles/features/articles/page/articles_page.dart';

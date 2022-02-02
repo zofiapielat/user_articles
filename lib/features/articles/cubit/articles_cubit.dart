@@ -10,7 +10,7 @@ class ArticlesCubit extends Cubit<ArticlesState> {
 
   final ArticlesRepository _articlesRepository;
 
-  Future<void> fetchData({required int authorID}) async {
+  Future<void> fetchData({required int authorId}) async {
     emit(
       ArticlesState(
         status: Status.loading,
@@ -19,7 +19,7 @@ class ArticlesCubit extends Cubit<ArticlesState> {
     await Future.delayed(const Duration(seconds: 1));
     try {
       final results =
-          await _articlesRepository.getArticlesForAuthorID(authorID);
+          await _articlesRepository.getArticlesForAuthorId(authorId);
       emit(
         ArticlesState(
           status: Status.success,
