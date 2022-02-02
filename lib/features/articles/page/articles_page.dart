@@ -54,6 +54,11 @@ class ArticlesPage extends StatelessWidget {
                         child: CircularProgressIndicator(),
                       );
                     case Status.success:
+                      if (state.results.isEmpty) {
+                        return const Center(
+                          child: Text('No articles found'),
+                        );
+                      }
                       return ListView(
                         children: [
                           for (final author in state.results)
