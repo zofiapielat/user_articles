@@ -22,7 +22,7 @@ class ArticlesPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(author.name),
       ),
-      body: BlocProvider(
+      body: BlocProvider<ArticlesCubit>(
         create: (context) => ArticlesCubit(
           articlesRepository: ArticlesRepository(
             remoteDataSource: ArticlesRemoteRetroFitDataSource(

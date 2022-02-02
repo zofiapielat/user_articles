@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocProvider(
+      body: BlocProvider<HomeCubit>(
         create: (context) {
           return HomeCubit(
             authorsRepository: AuthorsRepository(
