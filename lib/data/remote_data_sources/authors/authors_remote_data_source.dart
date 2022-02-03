@@ -6,9 +6,10 @@ import 'package:user_articles/domain/models/author_model.dart';
 part 'authors_remote_data_source.g.dart';
 
 @lazySingleton
-@RestApi(baseUrl: 'https://my-json-server.typicode.com/adamsmaka/json-demo/')
+@RestApi()
 abstract class AuthorsRemoteRetroFitDataSource {
-  factory AuthorsRemoteRetroFitDataSource(Dio dio, {String baseUrl}) =
+  @factoryMethod
+  factory AuthorsRemoteRetroFitDataSource(Dio dio) =
       _AuthorsRemoteRetroFitDataSource;
 
   @GET('/users')
@@ -18,8 +19,11 @@ abstract class AuthorsRemoteRetroFitDataSource {
 class AuthorsRemoteDioDataSource {
   Future<List<Map<String, dynamic>>?> getAuthorsData() async {
     try {
-      final response = await Dio().get<List<dynamic>>(
-          'https://my-json-server.typicode.com/adamsmaka/json-demo/users');
+      final response = await Dio(
+        BaseOptions(
+          baseUrl: 'https://my-json-server.typicode.com/adamsmaka/json-demo',
+        ),
+      ).get<List<dynamic>>('/users');
       final listDynamic = response.data;
       if (listDynamic == null) {
         return null;
