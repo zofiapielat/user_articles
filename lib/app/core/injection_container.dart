@@ -17,21 +17,21 @@ void configureDependenciesWithInjectable() => $initGetIt(getIt);
 
 void configureDependenciesManually() {
   // Data sources
-  getIt.registerLazySingleton<ArticlesRemoteRetroFitDataSource>(
+  getIt.registerLazySingleton(
     () => ArticlesRemoteRetroFitDataSource(Dio()),
   );
 
-  getIt.registerLazySingleton<AuthorsRemoteRetroFitDataSource>(
+  getIt.registerLazySingleton(
     () => AuthorsRemoteRetroFitDataSource(Dio()),
   );
 
   // Repository
-  getIt.registerLazySingleton<ArticlesRepository>(
+  getIt.registerLazySingleton(
     () => ArticlesRepository(
       remoteDataSource: getIt(),
     ),
   );
-  getIt.registerLazySingleton<AuthorsRepository>(
+  getIt.registerLazySingleton(
     () => AuthorsRepository(
       remoteDataSource: getIt(),
     ),

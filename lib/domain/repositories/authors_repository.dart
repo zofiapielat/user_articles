@@ -1,6 +1,8 @@
+import 'package:injectable/injectable.dart';
 import 'package:user_articles/data/remote_data_sources/authors/authors_remote_data_source.dart';
 import 'package:user_articles/domain/models/author_model.dart';
 
+@lazySingleton
 class AuthorsRepository {
   AuthorsRepository({required this.remoteDataSource});
 
