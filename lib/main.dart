@@ -4,7 +4,7 @@ import 'app/core/injection_container.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized;
-  configureDependencies();
+  configureDependenciesManually();
   runApp(const MyApp());
 }
 
