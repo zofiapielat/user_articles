@@ -4,7 +4,7 @@ import 'package:user_articles/domain/models/author_model.dart';
 class AuthorsRepository {
   AuthorsRepository({required this.remoteDataSource});
 
-  final AuthorsRemoteDataSource remoteDataSource;
+  final AuthorsMockedDataSource remoteDataSource;
 
   Future<List<AuthorModel>> getAuthorModels() async {
     final json = await remoteDataSource.getAuthors();

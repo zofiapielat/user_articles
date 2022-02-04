@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
         create: (context) {
           return HomeCubit(
             authorsRepository: AuthorsRepository(
-              remoteDataSource: AuthorsRemoteDataSource(),
+              remoteDataSource: AuthorsMockedDataSource(),
             ),
           )..start();
         },

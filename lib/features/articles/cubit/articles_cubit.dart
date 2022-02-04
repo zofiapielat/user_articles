@@ -19,12 +19,10 @@ class ArticlesCubit extends Cubit<ArticlesState> {
     await Future.delayed(const Duration(seconds: 1));
     try {
       final results = await articlesRepository.getArticlesForAuthorId(authorId);
-      final filteredResults =
-          results.where((article) => article.authorId == authorId).toList();
       emit(
         ArticlesState(
           status: Status.success,
-          results: filteredResults,
+          results: results,
         ),
       );
     } catch (error) {
