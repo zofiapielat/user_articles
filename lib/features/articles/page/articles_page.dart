@@ -59,7 +59,7 @@ class ArticlesPage extends StatelessWidget {
                       return ListView(
                         children: [
                           for (final author in state.results)
-                            _AuthorItemWidget(
+                            _ArticleItemWidget(
                               model: author,
                             ),
                         ],
@@ -84,8 +84,8 @@ class ArticlesPage extends StatelessWidget {
   }
 }
 
-class _AuthorItemWidget extends StatelessWidget {
-  const _AuthorItemWidget({
+class _ArticleItemWidget extends StatelessWidget {
+  const _ArticleItemWidget({
     Key? key,
     required this.model,
   }) : super(key: key);
