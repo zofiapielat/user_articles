@@ -24,11 +24,11 @@ dev_dependencies:
   flutter_lints: ^1.0.0
   flutter_test:
     sdk: flutter
-  freezed: ^1.1.1
-  injectable_generator: ^1.5.3
+  freezed: ^1.1.0
+  injectable_generator: ^1.5.2
   json_serializable: ^6.1.4
-  mocktail: ^0.0.1-dev.12
-  retrofit_generator: ^4.0.1
+  mocktail: ^0.2.0
+  retrofit_generator: ^3.0.1+1
 
 flutter:
   uses-material-design: true
