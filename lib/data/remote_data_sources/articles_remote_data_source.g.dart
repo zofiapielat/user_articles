@@ -6,8 +6,6 @@ part of 'articles_remote_data_source.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps
-
 class _ArticlesRemoteRetrofitDataSource
     implements ArticlesRemoteRetrofitDataSource {
   _ArticlesRemoteRetrofitDataSource(this._dio, {this.baseUrl});
