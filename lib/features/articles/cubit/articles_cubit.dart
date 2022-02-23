@@ -18,7 +18,6 @@ class ArticlesCubit extends Cubit<ArticlesState> {
         status: Status.loading,
       ),
     );
-    await Future.delayed(const Duration(seconds: 1));
     try {
       final results = await articlesRepository.getArticlesForAuthorId(authorId);
       emit(

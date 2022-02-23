@@ -18,7 +18,6 @@ class HomeCubit extends Cubit<HomeState> {
         status: Status.loading,
       ),
     );
-    await Future.delayed(const Duration(seconds: 1));
     try {
       final results = await authorsRepository.getAuthorModels();
       emit(
