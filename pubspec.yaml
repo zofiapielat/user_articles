@@ -20,6 +20,7 @@ dependencies:
   injectable: ^1.5.3
 
 dev_dependencies:
+  bloc_test: ^9.0.2
   build_runner: ^2.1.7
   flutter_lints: ^1.0.0
   flutter_test:
