@@ -27,6 +27,15 @@ class Config {
     }
   }
 
+  static bool get debugShowCheckedModeBanner {
+    switch (appFlavor) {
+      case Flavor.release:
+        return false;
+      case Flavor.development:
+        return true;
+    }
+  }
+
   static Icon get helloIcon {
     switch (appFlavor) {
       case Flavor.release:
