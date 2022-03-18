@@ -11,10 +11,10 @@ class Config {
   static String get helloMessage {
     switch (appFlavor) {
       case Flavor.release:
-        return 'release';
+        return 'Users version';
       case Flavor.development:
       default:
-        return 'development';
+        return 'Developers version';
     }
   }
 
