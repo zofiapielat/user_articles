@@ -16,7 +16,12 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(Config.helloMessage),
+        title: Row(
+          children: [
+            Config.helloIcon,
+            Text(Config.helloMessage),
+          ],
+        ),
       ),
       body: BlocProvider<HomeCubit>(
         create: (context) {
