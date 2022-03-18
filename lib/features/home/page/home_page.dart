@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:user_articles/app/core/config.dart';
 import 'package:user_articles/app/core/enums.dart';
 import 'package:user_articles/app/injection_container.dart';
 import 'package:user_articles/domain/models/author_model.dart';
@@ -15,14 +14,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: [
-            Config.helloIcon,
-            Text(Config.helloMessage),
-          ],
-        ),
-      ),
+      appBar: AppBar(),
       body: BlocProvider<HomeCubit>(
         create: (context) {
           return getIt<HomeCubit>()..start();
