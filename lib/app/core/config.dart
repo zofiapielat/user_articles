@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 enum Flavor {
   development,
-  release,
+  production,
 }
 
 class Config {
@@ -10,7 +10,7 @@ class Config {
 
   static String get helloMessage {
     switch (appFlavor) {
-      case Flavor.release:
+      case Flavor.production:
         return 'Users version';
       case Flavor.development:
       default:
@@ -20,7 +20,7 @@ class Config {
 
   static String get baseUrl {
     switch (appFlavor) {
-      case Flavor.release:
+      case Flavor.production:
         return 'https://my-json-server.typicode.com/adamsmaka/json-demo';
       case Flavor.development:
         return 'https://my-json-server.typicode.com/adamsmaka/json-demo';
@@ -29,7 +29,7 @@ class Config {
 
   static bool get debugShowCheckedModeBanner {
     switch (appFlavor) {
-      case Flavor.release:
+      case Flavor.production:
         return false;
       case Flavor.development:
         return true;
@@ -38,7 +38,7 @@ class Config {
 
   static Icon get helloIcon {
     switch (appFlavor) {
-      case Flavor.release:
+      case Flavor.production:
         return const Icon(Icons.new_releases);
       case Flavor.development:
       default:
