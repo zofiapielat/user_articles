@@ -1,4 +1,4 @@
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 import 'package:user_articles/domain/models/author_model.dart';
 
 void main() {
