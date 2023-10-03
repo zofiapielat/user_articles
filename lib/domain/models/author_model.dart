@@ -1,22 +1,19 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'author_model.freezed.dart';
 
 part 'author_model.g.dart';
 
-@JsonSerializable()
-class AuthorModel {
-  AuthorModel(
-    this.id,
-    this.picture,
-    this.firstName,
-    this.lastName,
-  );
-
-  int id;
-  String picture;
-  @JsonKey(name: 'first_name')
-  String firstName;
-  @JsonKey(name: 'last_name')
-  String lastName;
+@freezed
+class AuthorModel with _$AuthorModel {
+  const AuthorModel._();
+  factory AuthorModel(
+    int id,
+    String picture,
+    @JsonKey(name: 'first_name') String firstName,
+    @JsonKey(name: 'last_name') String lastName,
+  ) = _AuthorModel;
 
   String get name {
     return '$firstName $lastName';
@@ -24,6 +21,4 @@ class AuthorModel {
 
   factory AuthorModel.fromJson(Map<String, dynamic> json) =>
       _$AuthorModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$AuthorModelToJson(this);
 }
