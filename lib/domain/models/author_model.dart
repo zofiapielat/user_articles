@@ -1,23 +1,29 @@
-class AuthorModel {
-  const AuthorModel({
-    required this.id,
-    required this.picture,
-    required this.firstName,
-    required this.lastName,
-  });
+import 'package:json_annotation/json_annotation.dart';
 
-  final int id;
-  final String picture;
-  final String firstName;
-  final String lastName;
+part 'author_model.g.dart';
+
+@JsonSerializable()
+class AuthorModel {
+  AuthorModel(
+    this.id,
+    this.picture,
+    this.firstName,
+    this.lastName,
+  );
+
+  int id;
+  String picture;
+  @JsonKey(name: 'first_name')
+  String firstName;
+  @JsonKey(name: 'last_name')
+  String lastName;
 
   String get name {
     return '$firstName $lastName';
   }
 
-  AuthorModel.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
-        picture = json['picture'],
-        firstName = json['first_name'],
-        lastName = json['last_name'];
+  factory AuthorModel.fromJson(Map<String, dynamic> json) =>
+      _$AuthorModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AuthorModelToJson(this);
 }
