@@ -1,12 +1,9 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_articles/app/core/enums.dart';
 import 'package:user_articles/app/injection_container.dart';
-import 'package:user_articles/data/remote_data_sources/articles_remote_data_source.dart';
 import 'package:user_articles/domain/models/article_model.dart';
 import 'package:user_articles/domain/models/author_model.dart';
-import 'package:user_articles/domain/repositories/articles_repository.dart';
 import 'package:user_articles/features/articles/cubit/articles_cubit.dart';
 
 class ArticlesPage extends StatelessWidget {
@@ -68,7 +65,7 @@ class ArticlesPage extends StatelessWidget {
                         child: Text(
                           state.errorMessage ?? 'Unknown error',
                           style: TextStyle(
-                            color: Theme.of(context).errorColor,
+                            color: Theme.of(context).colorScheme.error,
                           ),
                         ),
                       );

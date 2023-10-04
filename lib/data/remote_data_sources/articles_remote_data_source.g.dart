@@ -10,12 +10,7 @@ part of 'articles_remote_data_source.dart';
 
 class _ArticlesRemoteRetrofitDataSource
     implements ArticlesRemoteRetrofitDataSource {
-  _ArticlesRemoteRetrofitDataSource(
-    this._dio, {
-    this.baseUrl,
-  }) {
-    baseUrl ??= 'https://my-json-server.typicode.com/adamsmaka/json-demo';
-  }
+  _ArticlesRemoteRetrofitDataSource(this._dio);
 
   final Dio _dio;
 
@@ -26,7 +21,7 @@ class _ArticlesRemoteRetrofitDataSource
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<List<dynamic>>(_setStreamType<List<ArticleModel>>(Options(
       method: 'GET',
