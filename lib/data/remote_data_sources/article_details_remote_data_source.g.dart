@@ -10,10 +10,7 @@ part of 'article_details_remote_data_source.dart';
 
 class _ArticleDetailsRemoteRetrofitDataSource
     implements ArticleDetailsRemoteRetrofitDataSource {
-  _ArticleDetailsRemoteRetrofitDataSource(
-    this._dio, {
-    this.baseUrl,
-  });
+  _ArticleDetailsRemoteRetrofitDataSource(this._dio);
 
   final Dio _dio;
 
@@ -24,7 +21,7 @@ class _ArticleDetailsRemoteRetrofitDataSource
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<List<dynamic>>(_setStreamType<List<ArticleDetailsModel>>(Options(
       method: 'GET',
