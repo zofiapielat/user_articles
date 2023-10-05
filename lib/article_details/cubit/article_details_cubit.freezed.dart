@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ArticleDetailsState {
-  List<ArticleDetailsModel> get results => throw _privateConstructorUsedError;
+  List<ArticleModel> get results => throw _privateConstructorUsedError;
   Status get status => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
@@ -31,8 +31,7 @@ abstract class $ArticleDetailsStateCopyWith<$Res> {
           ArticleDetailsState value, $Res Function(ArticleDetailsState) then) =
       _$ArticleDetailsStateCopyWithImpl<$Res, ArticleDetailsState>;
   @useResult
-  $Res call(
-      {List<ArticleDetailsModel> results, Status status, String? errorMessage});
+  $Res call({List<ArticleModel> results, Status status, String? errorMessage});
 }
 
 /// @nodoc
@@ -56,7 +55,7 @@ class _$ArticleDetailsStateCopyWithImpl<$Res, $Val extends ArticleDetailsState>
       results: null == results
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
-              as List<ArticleDetailsModel>,
+              as List<ArticleModel>,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -77,8 +76,7 @@ abstract class _$$ArticleDetailsStateImplCopyWith<$Res>
       __$$ArticleDetailsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {List<ArticleDetailsModel> results, Status status, String? errorMessage});
+  $Res call({List<ArticleModel> results, Status status, String? errorMessage});
 }
 
 /// @nodoc
@@ -100,7 +98,7 @@ class __$$ArticleDetailsStateImplCopyWithImpl<$Res>
       results: null == results
           ? _value._results
           : results // ignore: cast_nullable_to_non_nullable
-              as List<ArticleDetailsModel>,
+              as List<ArticleModel>,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -117,15 +115,15 @@ class __$$ArticleDetailsStateImplCopyWithImpl<$Res>
 
 class _$ArticleDetailsStateImpl implements _ArticleDetailsState {
   const _$ArticleDetailsStateImpl(
-      {final List<ArticleDetailsModel> results = const [],
+      {final List<ArticleModel> results = const [],
       this.status = Status.initial,
       this.errorMessage})
       : _results = results;
 
-  final List<ArticleDetailsModel> _results;
+  final List<ArticleModel> _results;
   @override
   @JsonKey()
-  List<ArticleDetailsModel> get results {
+  List<ArticleModel> get results {
     if (_results is EqualUnmodifiableListView) return _results;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_results);
@@ -167,12 +165,12 @@ class _$ArticleDetailsStateImpl implements _ArticleDetailsState {
 
 abstract class _ArticleDetailsState implements ArticleDetailsState {
   const factory _ArticleDetailsState(
-      {final List<ArticleDetailsModel> results,
+      {final List<ArticleModel> results,
       final Status status,
       final String? errorMessage}) = _$ArticleDetailsStateImpl;
 
   @override
-  List<ArticleDetailsModel> get results;
+  List<ArticleModel> get results;
   @override
   Status get status;
   @override

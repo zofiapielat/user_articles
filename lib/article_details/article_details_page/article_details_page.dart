@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_articles/app/injection_container.dart';
 import 'package:user_articles/article_details/cubit/article_details_cubit.dart';
-import 'package:user_articles/domain/models/article_details_model.dart';
+import 'package:user_articles/domain/models/article_model.dart';
 
 class ArticleDetailsPage extends StatelessWidget {
   const ArticleDetailsPage({
     Key? key,
     required this.details,
   }) : super(key: key);
-  final ArticleDetailsModel details;
+  final ArticleModel details;
 
   @override
   Widget build(BuildContext context) {

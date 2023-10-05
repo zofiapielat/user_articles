@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_articles/app/core/enums.dart';
 import 'package:user_articles/app/injection_container.dart';
+import 'package:user_articles/article_details/article_details_page/article_details_page.dart';
 import 'package:user_articles/domain/models/article_model.dart';
 import 'package:user_articles/domain/models/author_model.dart';
 import 'package:user_articles/features/articles/cubit/articles_cubit.dart';
@@ -96,7 +97,10 @@ class _ArticleItemWidget extends StatelessWidget {
         vertical: 10,
       ),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (_) => ArticleDetailsPage(details: model)));
+        },
         child: Container(
           padding: const EdgeInsets.symmetric(
             horizontal: 20,

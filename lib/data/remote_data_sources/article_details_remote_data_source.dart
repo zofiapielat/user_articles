@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
-import '../../domain/models/article_details_model.dart';
+import 'package:user_articles/domain/models/article_model.dart';
 
 part 'article_details_remote_data_source.g.dart';
 
@@ -13,5 +13,5 @@ abstract class ArticleDetailsRemoteRetrofitDataSource {
       _ArticleDetailsRemoteRetrofitDataSource;
 
   @GET('/articles')
-  Future<List<ArticleDetailsModel>> getArticleDetails();
+  Future<List<ArticleModel>> getArticleDetails();
 }

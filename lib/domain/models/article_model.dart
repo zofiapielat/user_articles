@@ -9,6 +9,8 @@ class ArticleModel with _$ArticleModel {
   factory ArticleModel(
     @JsonKey(name: 'author_id') int authorId,
     String content,
+    String picture,
+    String title,
     int id,
   ) = _ArticleModel;
 
