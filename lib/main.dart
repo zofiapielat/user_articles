@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:user_articles/app/injection_container.dart';
+import 'package:user_articles/article_details/article_details_page/article_details_page.dart';
 import 'package:user_articles/features/home/page/home_page.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      home: const ArticleDetailsPage(),
     );
   }
 }
