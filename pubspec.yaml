@@ -25,8 +25,11 @@ dev_dependencies:
   build_runner: ^2.3.2
   flutter_lints: ^2.0.1
   test: ^1.22.0
+<<<<<<< HEAD
   flutter_test:
     sdk: flutter
+=======
+>>>>>>> cb3d736e91d07a24e06147341aef05895fcf2151
   freezed: ^2.2.1
   injectable_generator: ^1.5.5
   json_serializable: ^6.5.4
